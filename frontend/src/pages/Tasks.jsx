@@ -50,12 +50,18 @@ const Tasks = () => {
 
   if (loader || isLoading) return <Loader />;
 
-  // 🔹 Group tasks by status
-  const pendingTasks = filteredTasks.filter((task) => task.status === "To Do");
-  const inProgressTasks = filteredTasks.filter(
-    (task) => task.status === "In Progress"
+  const sortByUpdatedAtDesc = (tasks) =>
+    [...tasks].sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
+
+  const pendingTasks = sortByUpdatedAtDesc(
+    filteredTasks.filter((task) => task.status === "To Do")
   );
-  const completedTasks = filteredTasks.filter((task) => task.status === "Done");
+  const inProgressTasks = sortByUpdatedAtDesc(
+    filteredTasks.filter((task) => task.status === "In Progress")
+  );
+  const completedTasks = sortByUpdatedAtDesc(
+    filteredTasks.filter((task) => task.status === "Done")
+  );
 
   const renderTasks = (tasks) =>
     tasks.map((t) => (

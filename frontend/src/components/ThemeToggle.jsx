@@ -6,7 +6,7 @@ import { setTheme } from "../features/generals/generalSlice";
 
 const ThemeToggle = () => {
   const dispatch = useDispatch();
-  const themeColor = useSelector(themeSelector);
+  const { themeColor } = useSelector(themeSelector);
 
   const handleToggle = () => {
     console.log("Hello");
@@ -18,7 +18,7 @@ const ThemeToggle = () => {
     <label className="switch">
       <input
         type="checkbox"
-        checked={themeColor === "dark"}
+        checked={themeColor === "#2a2a2a"}
         onChange={handleToggle}
       />
       <span className="slider round"></span>
