@@ -39,6 +39,7 @@ const AddTaskForm = ({ onSubmit }) => {
   }, [id]);
   const [errors, setErrors] = useState({});
 
+  const selectTheme = themeColor !== "whitesmoke" ? "bg-dark" : "bg-light";
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -117,6 +118,7 @@ const AddTaskForm = ({ onSubmit }) => {
             <RequiredField />
           </label>
           <input
+            style={{ backgroundColor: themeColor, color: fontColor }}
             type="text"
             className={`form-control ${errors.title ? "is-invalid" : ""}`}
             id="title"
@@ -136,6 +138,7 @@ const AddTaskForm = ({ onSubmit }) => {
             <RequiredField />
           </label>
           <textarea
+            style={{ backgroundColor: themeColor, color: fontColor }}
             className={`form-control ${errors.description ? "is-invalid" : ""}`}
             id="description"
             name="description"
@@ -154,6 +157,7 @@ const AddTaskForm = ({ onSubmit }) => {
             Deadline
           </label>
           <input
+            style={{ backgroundColor: themeColor, color: fontColor }}
             type="date"
             className="form-control"
             id="deadline"

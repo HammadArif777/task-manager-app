@@ -48,7 +48,7 @@ const ImportantTask = () => {
 
   return (
     <div>
-      <div className="h1">{allTasks?.length > 0 && "All Tasks"}</div>
+      <div className="h1">{allTasks?.length > 0 && "Important Tasks"}</div>
       <ul style={{ listStyle: "none" }} className="d-flex gap-2 flex-wrap">
         {filteredTasks?.length > 0 ? (
           filteredTasks.map((t) => (
