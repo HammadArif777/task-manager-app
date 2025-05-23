@@ -85,7 +85,7 @@ const AddTaskForm = ({ onSubmit }) => {
       } else {
         dispatch(createTask(formData));
       }
-      toast.success("Task is created successfully!");
+      toast.success(`Task is ${id ? "updated" : "created"} successfully!`);
       setFormData({
         title: "",
         description: "",

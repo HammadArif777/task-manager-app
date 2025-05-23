@@ -5,6 +5,7 @@ import Tasks from "./pages/Tasks";
 import AddTask from "./pages/AddTask";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/ReactToastify.css";
+import ImportantTask from "./pages/ImportantTask";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/tasks" element={<Tasks />} />
             <Route path="/tasks/add-task" element={<AddTask />} />
             <Route path="/tasks/update-task/:id" element={<AddTask />} />
+            <Route path="/tasks/important-task" element={<ImportantTask />} />
           </Routes>
         </div>
       </div>

@@ -40,7 +40,7 @@ const Sidebar = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/important" className="nav-link ">
+          <NavLink to="/tasks/important-task" className="nav-link ">
             <div className="d-flex align-items-center gap-1">
               <TfiHeart />
               <span>Important Tasks</span>

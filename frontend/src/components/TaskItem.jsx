@@ -6,6 +6,15 @@ import { Link } from "react-router-dom";
 import ConfirmationModal from "./Modals/ConfirmationModal";
 import { useDispatch } from "react-redux";
 import { deleteTask } from "../features/tasks/taskSlice";
+import axios from "axios";
+import { toast } from "react-toastify";
+const isDeadlineExceeded = (deadline) => {
+  if (!deadline) return false;
+  const today = new Date();
+  const deadlineDate = new Date(deadline);
+  return deadlineDate < today;
+};
+
 const changeStatusColor = (status) => {
   switch (status) {
     case "To Do":
@@ -18,14 +27,26 @@ const changeStatusColor = (status) => {
   }
 };
 const TaskItem = ({ id, title, description, createdAt, status, deadline }) => {
+  const isOverdue = isDeadlineExceeded(deadline);
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const handleDeleteTaskItem = () => {
     try {
       dispatch(deleteTask(id));
       setIsModalOpen(false); // Close modal after deleting
+      toast.success("Task is deleted successfully");
     } catch (error) {
       console.log("🚀 ~ handleDeleteTaskItem ~ error:", error);
+      toast.error(error.message);
+    }
+  };
+  const handleImportantTask = async (id) => {
+    try {
+      const response = await axios.patch(
+        `http://localhost:3001/api/v1/tasks/${id}`
+      );
+    } catch (error) {
+      console.log("🚀 ~ handleImportantTask ~ error:", error);
     }
   };
   return (
@@ -41,8 +62,17 @@ const TaskItem = ({ id, title, description, createdAt, status, deadline }) => {
       <div className="card" style={{ width: "450px" }}>
         <div className={`card-header ${changeStatusColor(status)}`}>
           <div className="d-flex justify-content-between">
-            <span>{status}</span>
             <span>
+              {status}{" "}
+              {isOverdue && (
+                <span className="badge bg-danger">Deadline Passed</span>
+              )}
+            </span>
+            <span
+              className="cursor-pointer"
+              role="button"
+              onClick={() => handleImportantTask(id)}
+            >
               <TfiHeart />
             </span>
           </div>

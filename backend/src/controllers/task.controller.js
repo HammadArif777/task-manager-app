@@ -88,4 +88,13 @@ const deleteTask = async (req, res, next) => {
     next(error);
   }
 };
-export { getAllTasks, getTaskById, deleteTask, updateTask, createTask };
+const setImportantTask = async (req, res, next) => {
+  try {
+    // route: PATCH /tasks/:id/important
+    await Task.findByIdAndUpdate(req.params.id, { important: true }, { new: true });
+    return res.status(204).json(ApiResponse({ success: true, message: "ok", statusCode: 201 }));
+  } catch (error) {
+    next(error);
+  }
+};
+export { getAllTasks, getTaskById, deleteTask, updateTask, createTask, setImportantTask };

@@ -5,6 +5,7 @@ import {
   getAllTasks,
   getTaskById,
   updateTask,
+  setImportantTask,
 } from "../controllers/task.controller.js";
 
 const router = Router();
@@ -14,5 +15,5 @@ router.route("/").post(createTask).get(getAllTasks);
 
 // Routes for single task operations
 router.route("/:id").get(getTaskById).put(updateTask).delete(deleteTask);
-
+router.route("/:id").patch(setImportantTask);
 export default router;
