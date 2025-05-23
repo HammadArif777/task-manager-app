@@ -10,8 +10,6 @@ const Sidebar = () => {
   const allTasks = useSelector(items) ?? 0;
   return (
     <div className="d-flex flex-column flex-shrink-0 p-3 vh-100 sidebar">
-      <h4 className="mb-4">Task Manager</h4>
-
       <ul className="nav flex-column mb-auto gap-1">
         <li className="nav-item">
           <NavLink
@@ -50,16 +48,6 @@ const Sidebar = () => {
           </NavLink>
         </li>
       </ul>
-
-      {/* Settings link pushed to bottom */}
-      <div className="mt-auto">
-        <NavLink to="/settings" className="nav-link">
-          <div className="d-flex align-items-center gap-1">
-            <IoSettingsOutline />
-            <span>Settings</span>
-          </div>
-        </NavLink>
-      </div>
     </div>
   );
 };

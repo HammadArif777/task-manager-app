@@ -176,7 +176,7 @@ const AddTaskForm = ({ onSubmit }) => {
           className="btn text-white"
           style={{ backgroundColor: "#B95CF4" }}
         >
-          Add Task
+          {id ? "Update task" : "Add task"}
         </button>
       </form>
     </>

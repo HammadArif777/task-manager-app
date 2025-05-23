@@ -13,6 +13,7 @@
 }
 .app-container {
   display: flex;
+  flex-direction: column;
   height: 100vh;
   gap: 1rem;
 }
@@ -29,7 +30,7 @@
   color: black;
 }
 .nav-link:active {
-  border-bottom: 2px solid dodgerblue;
+  border-bottom: 2px solid #b95cf4;
 }
 .ellipsis {
   overflow: hidden; /* Hide overflow */
@@ -57,4 +58,10 @@
   100% {
     transform: rotate(360deg);
   }
+}
+.no-task-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
