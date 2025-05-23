@@ -60,6 +60,7 @@ const ImportantTask = () => {
                 status={t.status}
                 createdAt={t.createdAt?.slice(0, 10)}
                 deadline={t.deadline?.slice(0, 10)}
+                importantTask={true}
               />
             </li>
           ))

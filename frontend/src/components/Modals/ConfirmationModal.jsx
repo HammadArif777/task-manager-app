@@ -1,12 +1,19 @@
+import { useDispatch, useSelector } from "react-redux";
+import { themeSelector } from "../../features/generals/generalSelector";
+
 const ConfirmationModal = ({
   modalTitle,
   modalDescription,
   onHandleSaveChanges,
   onClose,
 }) => {
+  const { fontColor, themeColor } = useSelector(themeSelector);
   return (
     <div className="modal d-block" tabIndex={-1}>
-      <div className="modal-dialog">
+      <div
+        className="modal-dialog"
+        style={{ backgroundColor: themeColor, color: fontColor }}
+      >
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title">{modalTitle}</h5>

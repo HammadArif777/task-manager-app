@@ -5,12 +5,10 @@ import { TASK_STATUS } from "../constants/general.constant";
 import { useDispatch, useSelector } from "react-redux";
 import { setFilter } from "../features/generals/generalSlice";
 import { filterSelector } from "../features/generals/generalSelector";
+import ThemeToggle from "./ThemeToggle";
 const Navbar = () => {
   const dispatch = useDispatch();
   const { title, description, status } = useSelector(filterSelector);
-  console.log("🚀 ~ Navbar ~ title:", title);
-  console.log("🚀 ~ Navbar ~ description:", description);
-
   const handleStatusChange = (e) => {
     dispatch(
       setFilter({
@@ -53,8 +51,7 @@ const Navbar = () => {
         </div>
 
         <div className="d-flex align-items-center gap-3">
-          <span className="text-white">Welcome, User</span>
-          <IoPersonCircleOutline size={24} color="white" />
+          <ThemeToggle />
         </div>
       </div>
     </nav>

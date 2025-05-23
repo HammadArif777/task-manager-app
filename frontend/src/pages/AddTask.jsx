@@ -5,12 +5,14 @@ import RequiredField from "../components/RequiredField";
 import Select from "react-select";
 import { emptyTask, TASK_STATUS } from "../constants/general.constant";
 import { useLocation, useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateTask, createTask } from "../features/tasks/taskSlice";
 import { fetchById } from "../../utils/general.utils";
+import { themeSelector } from "../features/generals/generalSelector";
 
 const AddTaskForm = ({ onSubmit }) => {
   const dispatch = useDispatch();
+  const { themeColor, fontColor } = useSelector(themeSelector);
   const { id } = useParams();
   const [formData, setFormData] = useState(emptyTask);
 
@@ -105,8 +107,9 @@ const AddTaskForm = ({ onSubmit }) => {
       <div className="h1">{id ? "Update task" : "Create task"}</div>
       <ToastContainer />
       <form
+        style={{ backgroundColor: themeColor, color: fontColor }}
         onSubmit={handleSubmit}
-        className="p-4 border rounded bg-white shadow-sm"
+        className="p-4 border rounded shadow-sm"
       >
         <div className="mb-3">
           <label htmlFor="title" className="form-label">
